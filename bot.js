@@ -15,38 +15,50 @@
     -> http://howdy.ai/botkit
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-var env = require('node-env-file');
-env(__dirname + '/.env');
+var env = require("node-env-file");
+env(__dirname + "/.env");
 
-
-var Botkit = require('botkit');
-var debug = require('debug')('botkit:main');
+var Botkit = require("botkit");
+var debug = require("debug")("botkit:main");
+var rasa = require("./rasa/middleware")({
+  rasa_uri: "http://localhost:5000",
+});
 
 var bot_options = {
-    replyWithTyping: true,
+  replyWithTyping: true,
 };
 
 // Use a mongo database if specified, otherwise store in a JSON file local to the app.
 // Mongo is automatically configured when deploying to Heroku
 if (process.env.MONGO_URI) {
   // create a custom db access method
-  var db = require(__dirname + '/components/database.js')({});
+  var db = require(__dirname + "/components/database.js")({});
   bot_options.storage = db;
 } else {
-    bot_options.json_file_store = __dirname + '/.data/db/'; // store user data in a simple JSON format
+  bot_options.json_file_store = __dirname + "/.data/db/"; // store user data in a simple JSON format
 }
 
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.socketbot(bot_options);
 
+// Override receive method in botkit
+controller.middleware.receive.use(rasa.receive);
+
+// Override hears method in botkit
+controller.changeEars(function(patterns, message) {
+  return rasa.hears(patterns, message);
+});
+
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
-var webserver = require(__dirname + '/components/express_webserver.js')(controller);
+var webserver = require(__dirname + "/components/express_webserver.js")(
+  controller
+);
 
 // Load in some helpers that make running Botkit on Glitch.com better
-require(__dirname + '/components/plugin_glitch.js')(controller);
+require(__dirname + "/components/plugin_glitch.js")(controller);
 
 // Load in a plugin that defines the bot's identity
-require(__dirname + '/components/plugin_identity.js')(controller);
+require(__dirname + "/components/plugin_identity.js")(controller);
 
 // Open the web socket server
 controller.openSocketServer(controller.httpserver);
@@ -55,16 +67,20 @@ controller.openSocketServer(controller.httpserver);
 controller.startTicking();
 
 var normalizedPath = require("path").join(__dirname, "skills");
-require("fs").readdirSync(normalizedPath).forEach(function(file) {
-  require("./skills/" + file)(controller);
-});
+require("fs")
+  .readdirSync(normalizedPath)
+  .forEach(function(file) {
+    require("./skills/" + file)(controller);
+  });
 
-console.log('I AM ONLINE! COME TALK TO ME: http://localhost:' + (process.env.PORT || 3000))
+console.log(
+  "I AM ONLINE! COME TALK TO ME: http://localhost:" + (process.env.PORT || 3000)
+);
 
 function usage_tip() {
-    console.log('~~~~~~~~~~');
-    console.log('Botkit Starter Kit');
-    console.log('Execute your bot application like this:');
-    console.log('PORT=3000 node bot.js');
-    console.log('~~~~~~~~~~');
+  console.log("~~~~~~~~~~");
+  console.log("Botkit Starter Kit");
+  console.log("Execute your bot application like this:");
+  console.log("PORT=3000 node bot.js");
+  console.log("~~~~~~~~~~");
 }
