@@ -1,0 +1,39 @@
+%[greet]('training': '3', 'testing': '3')
+    hey
+    hello
+    hi
+    good morning
+    good evening
+    hey there
+
+%[query_summary_of_gene]('training': '10', 'testing': '10')
+    gene @[gene]
+    protein @[gene]
+    tell me about @[gene]
+    what do you know about @[gene]
+
+%[query_summary_of_disease]('training': '10', 'testing': '10')
+    disease @[disease]
+    trait @[disease]
+    phenotype @[disease]
+    tell me about @[disease]
+    what do you know about @[disease]
+
+@[gene]
+    braf
+    brafp1
+    brap
+    pten
+    il3
+    il5
+    il22
+
+@[disease]
+    neoplasm
+    cancer
+    Alzheimers disease
+    melanoma
+    leukemia
+    acute lymphoblastic leukemia
+    carcinoma
+    breast carcinoma

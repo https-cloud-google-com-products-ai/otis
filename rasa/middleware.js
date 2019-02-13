@@ -30,9 +30,9 @@ module.exports = function(config) {
           json: true,
         };
 
-        // console.log("asking rasa: ", requestOptions);
+        console.log("asking rasa: ", postData);
         request.post(requestOptions, function(error, response, body) {
-          // console.log("rasa replied: ", body);
+          console.log("rasa replied: ", body);
           // TODO
           // error handling
           if (body) {

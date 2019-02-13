@@ -10,6 +10,7 @@
     "body-parser": "^1.18.3",
     "botkit": "^0.7.0",
     "botkit-storage-mongo": "^1.0.6",
+    "chatito": "^2.1.5",
     "debug": "^3.1.0",
     "express": "^4.16.4",
     "express-hbs": "^1.0.4",

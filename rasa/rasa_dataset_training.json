@@ -1,0 +1,176 @@
+{
+  "rasa_nlu_data": {
+    "regex_features": [],
+    "entity_synonyms": [],
+    "common_examples": [
+      { "text": "hi", "intent": "greet", "entities": [] },
+      { "text": "good evening", "intent": "greet", "entities": [] },
+      { "text": "hey", "intent": "greet", "entities": [] },
+      {
+        "text": "what do you know about il5",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 26, "entity": "gene", "start": 23, "value": "il5" }
+        ]
+      },
+      {
+        "text": "protein il5",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 11, "entity": "gene", "start": 8, "value": "il5" }
+        ]
+      },
+      {
+        "text": "gene pten",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 9, "entity": "gene", "start": 5, "value": "pten" }
+        ]
+      },
+      {
+        "text": "tell me about brap",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 18, "entity": "gene", "start": 14, "value": "brap" }
+        ]
+      },
+      {
+        "text": "protein il22",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 12, "entity": "gene", "start": 8, "value": "il22" }
+        ]
+      },
+      {
+        "text": "gene brap",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 9, "entity": "gene", "start": 5, "value": "brap" }
+        ]
+      },
+      {
+        "text": "tell me about il5",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 17, "entity": "gene", "start": 14, "value": "il5" }
+        ]
+      },
+      {
+        "text": "what do you know about il3",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 26, "entity": "gene", "start": 23, "value": "il3" }
+        ]
+      },
+      {
+        "text": "what do you know about pten",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 27, "entity": "gene", "start": 23, "value": "pten" }
+        ]
+      },
+      {
+        "text": "tell me about il22",
+        "intent": "query_summary_of_gene",
+        "entities": [
+          { "end": 18, "entity": "gene", "start": 14, "value": "il22" }
+        ]
+      },
+      {
+        "text": "trait carcinoma",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          { "end": 15, "entity": "disease", "start": 6, "value": "carcinoma" }
+        ]
+      },
+      {
+        "text": "tell me about acute lymphoblastic leukemia",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          {
+            "end": 42,
+            "entity": "disease",
+            "start": 14,
+            "value": "acute lymphoblastic leukemia"
+          }
+        ]
+      },
+      {
+        "text": "disease Alzheimers disease",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          {
+            "end": 26,
+            "entity": "disease",
+            "start": 8,
+            "value": "Alzheimers disease"
+          }
+        ]
+      },
+      {
+        "text": "what do you know about Alzheimers disease",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          {
+            "end": 41,
+            "entity": "disease",
+            "start": 23,
+            "value": "Alzheimers disease"
+          }
+        ]
+      },
+      {
+        "text": "phenotype Alzheimers disease",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          {
+            "end": 28,
+            "entity": "disease",
+            "start": 10,
+            "value": "Alzheimers disease"
+          }
+        ]
+      },
+      {
+        "text": "phenotype acute lymphoblastic leukemia",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          {
+            "end": 38,
+            "entity": "disease",
+            "start": 10,
+            "value": "acute lymphoblastic leukemia"
+          }
+        ]
+      },
+      {
+        "text": "tell me about neoplasm",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          { "end": 22, "entity": "disease", "start": 14, "value": "neoplasm" }
+        ]
+      },
+      {
+        "text": "disease carcinoma",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          { "end": 17, "entity": "disease", "start": 8, "value": "carcinoma" }
+        ]
+      },
+      {
+        "text": "trait melanoma",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          { "end": 14, "entity": "disease", "start": 6, "value": "melanoma" }
+        ]
+      },
+      {
+        "text": "phenotype cancer",
+        "intent": "query_summary_of_disease",
+        "entities": [
+          { "end": 16, "entity": "disease", "start": 10, "value": "cancer" }
+        ]
+      }
+    ]
+  }
+}

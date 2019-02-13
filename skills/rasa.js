@@ -15,14 +15,21 @@ module.exports = function(controller) {
     "message_received",
     (bot, message) => {
       console.log("asked for gene", message.entities);
-      bot.reply(message, "You asked about a gene");
+      bot.reply(
+        message,
+        `I think you asked about a gene${
+          message.entities && message.entities.gene
+            ? ` (perhaps ${message.entities.gene.join(", ")}`
+            : ""
+        }`
+      );
     }
   );
   controller.hears(
     ["query_summary_of_disease"],
     "message_received",
     (bot, message) => {
-      console.log("asked for disease", message.entities);
+      // console.log("asked for disease", message.entities);
       bot.reply(message, "You asked about a disease");
     }
   );
