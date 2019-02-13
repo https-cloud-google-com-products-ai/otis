@@ -71,31 +71,27 @@ def evaluate_model(td_file, model_loc):
     # evaluates the model on the training data
     # wrapper for rasa_nlu.evaluate.run_evaluation
 
-    evaluate.run_evaluation(td_file, model_loc)
+    evaluate.run_evaluation(td_file, model_loc, intent_hist_filename='intent-hist.png')
 
 
 def get_path_dicts(key):
     # gets the right training data and model directory given the demo
     training_data_dict = {
-        'food': 'data/food/food_train.md',
-        'company': 'data/company/company_train.json',
-        'symbol': 'data/gene/symbol_train.md'
+        'gene': 'data/gene/symbol_train.md',
+        'disease': 'data/gene/symbol_train.md'
     }
     training_data_lookup_dict = {
-        'food': 'data/food/food_train_lookup.md',
-        'company': 'data/company/company_train_lookup.json',
-        'symbol': 'data/gene/symbol_train_lookup.md'
+        'gene': 'data/gene/symbol_train_lookup.md',
+        'disease': 'data/gene/symbol_train_lookup.md'
 
     }
     test_data_dict = {
-        'food': 'data/food/food_test.md',
-        'company': 'data/company/company_test.json',
-        'symbol': 'data/gene/symbol_test.md'
+        'gene': 'data/gene/symbol_test.md',
+        'disease': 'data/gene/symbol_test.md'
     }
     model_dir_dict = {
-        'food': 'models/food',
-        'company': 'models/company',
-        'symbol': 'models/symbol'
+        'gene': 'models/gene',
+        'disease': 'models/disease'
     }
 
     training_data = training_data_dict[key]
@@ -106,9 +102,8 @@ def get_path_dicts(key):
     return training_data, training_data_lookup, test_data, model_dir
 
 
-def run_demo():
+def run_demo(key):
     disp_bar = True
-    key = 'symbol'
     # runs the demo specified by key
 
     # get the data for this key and the configs
@@ -221,4 +216,6 @@ if __name__ == "__main__":
     log_stream = StringIO()
     logging.basicConfig(stream=log_stream, level=logging.INFO)
 
-    run_demo()
+    keys = ['gene', 'disease']
+    for key in keys:
+        run_demo(key)

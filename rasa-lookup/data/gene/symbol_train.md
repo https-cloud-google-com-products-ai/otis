@@ -14,34 +14,59 @@
 - see you around
 - see you later
 
-## intent:query_summary_of_gene
+## intent:help
 
-- tell me about [braf](symbol)
-- what do you know about [pten](symbol)?
-- gene [braf](symbol)
-- protein [il3](symbol)
-- what is [braf](symbol)?
-- what is known about [braf](symbol)?
-- can you summarize of the gene [braf](symbol)?
+- help
+- info
+- what can you tell me?
+- what can you do?
+- options
 
-## intent:query_baseline_expression_of_gene
+## intent:query_gene_summary
 
-- where is [braf](symbol) expressed?
-- rna expression of [brap](symbol)
-- which tissues express [braf](symbol)?
-- what tissues is [il3](symbol) highly expressed in?
-- is [braf](symbol) uniquely expressed in any particular tissues?
-- which cell types express [il5](symbol)?
-- what cell types is [pten](symbol) highly expressed in?
-- is [il5](symbol) uniquely expressed in any particular cell types?
-- where in the body is [braf](symbol) important?
-- where in the body is [pten](symbol) over expressed?
+- tell me about [braf](gene)
+- what do you know about [braf](gene)?
+- gene [braf](gene)
+- protein [braf](gene)
+- what is [braf](gene)?
+- what is known about [braf](gene)?
+- can you summarize the gene [braf](gene)?
 
-## lookup:symbol
+## intent:query_gene_baseline_expression_profile
 
-- braf
-- brafp1
-- brap
-- pten
-- il3
-- il5
+- where is [braf](gene) expressed?
+- rna expression of [braf](gene)
+- which tissues express [braf](gene)?
+- what tissues is [braf](gene) highly expressed in?
+- is [braf](gene) uniquely expressed in any particular tissues?
+- which cell types express [braf](gene)?
+- what cell types is [braf](gene) highly expressed in?
+- is [braf](gene) uniquely expressed in any particular cell types?
+- where in the body is [braf](gene) important?
+- where in the body is [braf](gene) over expressed?
+
+## intent:query_gene_associated_diseases
+
+- which diseases are associated with [braf](gene)?
+- diseases associated with [braf](gene)
+- phenotypes linked to [braf](gene)
+- [braf](gene) associated traits
+
+## intent:query_disease_summary
+
+- tell me about [melanoma](disease)
+- what do you know about [melanoma](disease)?
+- disease [melanoma](disease)
+- trait [melanoma](disease)
+- phenotype [melanoma](disease)
+- can you summarize the disease [melanoma](disease)?
+- what is [melanoma](disease)?
+
+## intent:query_disease_associated_genes
+
+- which genes are associated with [melanoma](disease)?
+- genes associated with [melanoma](disease)
+- proteins linked to [melanoma](disease)
+- genes linked to [melanoma](disease)
+- targets linked to [melanoma](disease)
+- [melanoma](disease) associated targets
