@@ -70,3 +70,11 @@
 - genes linked to [melanoma](disease)
 - targets linked to [melanoma](disease)
 - [melanoma](disease) associated targets
+
+## lookup:gene
+
+- braf
+
+## lookup:disease
+
+- melanoma

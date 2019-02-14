@@ -6,5 +6,5 @@ components/routes/_*
 .DS_Store
 rasa/models
 rasa/rasa_core.log
-rasa-lookup/models
-rasa-lookup/img
+rasalookup/models
+rasalookup/img

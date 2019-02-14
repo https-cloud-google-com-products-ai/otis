@@ -73,8 +73,8 @@
 
 ## lookup:gene
 
-data/gene/symbols.csv
+/Users/gpeat/opentargets/otis/rasalookup/data/gene/symbols.csv
 
 ## lookup:disease
 
-data/disease/names.csv
+/Users/gpeat/opentargets/otis/rasalookup/data/disease/names.csv

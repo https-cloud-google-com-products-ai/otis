@@ -83,7 +83,6 @@ def get_path_dicts(key):
     training_data_lookup_dict = {
         'gene': 'data/gene/symbol_train_lookup.md',
         'disease': 'data/gene/symbol_train_lookup.md'
-
     }
     test_data_dict = {
         'gene': 'data/gene/symbol_test.md',
