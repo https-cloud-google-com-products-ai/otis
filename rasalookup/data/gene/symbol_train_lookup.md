@@ -17,9 +17,8 @@
 ## intent:help
 
 - help
+- about
 - info
-- what can you tell me?
-- what can you do?
 - options
 
 ## intent:query_gene_summary

@@ -20,7 +20,7 @@ env(__dirname + "/.env");
 
 var Botkit = require("botkit");
 var debug = require("debug")("botkit:main");
-var rasa = require("./rasa/middleware")({
+var rasa = require("./rasalookup/middleware")({
   rasa_uri: "http://localhost:5000",
 });
 
