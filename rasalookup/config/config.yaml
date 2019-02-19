@@ -3,11 +3,12 @@ language: "en"
 pipeline:
   - name: "nlp_spacy"
   - name: "tokenizer_spacy"
+  - name: "intent_featurizer_spacy"
   - name: "intent_entity_featurizer_regex"
   - name: "ner_crf"
     features:
       [
-        ["low", "title", "upper"],
+        ["pos", "pos2"],
         [
           "bias",
           "low",
@@ -20,6 +21,10 @@ pipeline:
           "title",
           "digit",
           "pattern",
+          "pos",
+          "pos2",
         ],
-        ["low", "title", "upper"],
+        ["pos", "pos2"],
       ]
+    BILOU_flag: false
+  - name: "intent_classifier_sklearn"
