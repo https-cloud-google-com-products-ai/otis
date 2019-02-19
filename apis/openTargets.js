@@ -91,6 +91,16 @@ const targetAssociations = ensgId =>
     search: "",
     draw: 2,
   });
+const diseaseAssociations = efoId =>
+  axios.post(`${ROOT}public/association/filter`, {
+    disease: [efoId],
+    facets: false,
+    direct: true,
+    size: 10000,
+    sort: ["association_score.overall"],
+    search: "",
+    draw: 2,
+  });
 const targetAssociationsFacets = ensgId =>
   axios.get(
     `${ROOT}public/association/filter?target=${ensgId}&outputstructure=flat&facets=true&direct=true&size=1`
@@ -101,4 +111,5 @@ const targetExpression = ensgId =>
 module.exports = {
   targetAssociations,
   targetExpression,
+  diseaseAssociations,
 };
