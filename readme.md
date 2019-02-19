@@ -4,7 +4,11 @@ Otis is intended to improve Open Targets search capability to support more compl
 
 ## What is it?
 
-Otis is built primarily from two libraries. The first, [rasa](https://rasa.com/), builds an NLU model to classify intent from user input. The second, [botkit](https://botkit.ai/), builds a web-based chatbot that delegates intent classification to the rasa model. The setup is inspired by this [blog post](https://medium.com/@harjun1601/building-a-chatbot-with-botkit-and-rasa-a18aa4d69ebb).
+Otis is built primarily from two libraries. The first, [rasa](https://rasa.com/), builds an NLU model to classify intent from user input. The second, [botkit](https://botkit.ai/), builds a web-based chatbot that delegates intent classification to the rasa model.
+
+The chatbot is primarily to used to show the search history for development purposes and to return markdown responses without setting up a full application. The search could potentially be powered by the rasa interface alone.
+
+The setup is inspired by this [blog post](https://medium.com/@harjun1601/building-a-chatbot-with-botkit-and-rasa-a18aa4d69ebb).
 
 ## How do I run it?
 
@@ -21,19 +25,33 @@ pip install rasa_nlu[spacy]
 pip install service_identity
 ```
 
-### Build the NLU model
+### Generate the training data
 
-The following command builds a model in the `rasa/models/default` directory. You should only need to run this once. However, if you edit the `rasa/nlu.md` file, you should rerun this step.
+To train a model to identify intents, we need training data. [Chatito](https://github.com/rodrigopivi/Chatito) can generate the training data based on entity dictionaries and phrase models.
 
 ```
-python -m rasa_nlu.train -c nlu_config.yml --path models --data nlu.md
+# in the rasalookup/chatito directory
+chatito generator.chatito --format=rasa
+```
+
+### Build the NLU model
+
+The following command builds a model in the `rasalookup/models/default` directory. You should only need to run this once. However, if you edit the `rasa/nlu.md` file, you should rerun this step.
+
+```
+# in the rasalookup directory
+python -m rasa_nlu.train -c config/config_tf.yaml --path models --data chatito/rasa_dataset_training.json
+
+# the model can be (optionally) evaluated against test data
+python -m rasa_nlu.evaluate --model models/default/<latest-model> --data chatito/rasa_dataset_testing.json --verbose
 ```
 
 ### Run the rasa server
 
-To talk to the rasa API, start the built in server on port 5000.
+To talk to the rasa API, start the built-in server on port 5000.
 
 ```
+# in the rasalookup directory
 python -m rasa_nlu.server --path models
 ```
 

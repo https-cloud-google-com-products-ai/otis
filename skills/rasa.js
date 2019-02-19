@@ -155,7 +155,7 @@ module.exports = function(controller) {
         const diseaseId = disease.id;
         bot.reply(
           message,
-          `There is a disease called [${diseaseName}](https://www.targetvalidation.org/disease/${diseaseId}).`
+          `There is a disease called [${diseaseName}](https://www.targetvalidation.org/disease/${diseaseId}). I'm currently not smart enough to tell you more.`
         );
       } else {
         bot.reply(
@@ -169,14 +169,49 @@ module.exports = function(controller) {
     ["query_disease_associated_genes"],
     "message_received",
     (bot, message) => {
-      bot.reply(
-        message,
-        `I think you asked about the associated genes for a disease${
-          message.entities && message.entities.disease
-            ? ` (perhaps ${message.entities.disease.join(", ")})`
-            : ""
-        }`
-      );
+      if (message.entities && message.entities.disease) {
+        const diseaseName = message.entities.disease[0].toUpperCase();
+        const disease = lookupDiseases[diseaseName] || {};
+        const diseaseId = disease.id;
+        if (diseaseId) {
+          otApi
+            .diseaseAssociations(diseaseId)
+            .then(response => {
+              const relevantTargets = response.data.data.slice(0, 10);
+              const relevantTargetCount = response.data.data.length;
+              const relevantTargetSymbols = relevantTargets
+                .map(d => ({
+                  symbol: d.target.gene_info.symbol,
+                  id: d.target.id,
+                }))
+                .map(
+                  d =>
+                    `[${d.symbol}](https://www.targetvalidation.org/target/${
+                      d.id
+                    })`
+                );
+              bot.reply(
+                message,
+                `${diseaseName} is associated with ${relevantTargetCount} targets, the top 10 of which are:\n* ${relevantTargetSymbols.join(
+                  "\n* "
+                )}.\n\nSee the rest [here](https://www.targetvalidation.org/disease/${diseaseId}/associations).`
+              );
+            })
+            .catch(error => {
+              console.error("Oops!", error);
+            });
+        } else {
+          bot.reply(
+            message,
+            `I think you asked about targets associated with ${diseaseName}, but I couldn't find an EFO ID.`
+          );
+        }
+      } else {
+        bot.reply(
+          message,
+          "I think you asked about targets associated with a disease, but I don't know which one."
+        );
+      }
     }
   );
 };
