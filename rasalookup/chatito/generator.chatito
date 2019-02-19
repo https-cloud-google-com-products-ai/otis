@@ -11,7 +11,7 @@
     ~[info]
     ~[ability]
 
-%[query_gene_summary]('training': '500', 'testing': '500')
+%[query_gene_summary]('training': '2000', 'testing': '2000')
     tell me about @[gene]
     tell me about the target @[gene]
     tell me about the gene @[gene]
@@ -30,7 +30,7 @@
     can you summarize the gene @[gene]?
     can you summarize the protein @[gene]?
 
-%[query_gene_baseline_expression_profile]('training': '500', 'testing': '500')
+%[query_gene_baseline_expression_profile]('training': '2000', 'testing': '2000')
     where is @[gene] expressed?
     rna expression of @[gene]
     which tissues express @[gene]?
@@ -50,7 +50,7 @@
     where in the body is @[gene] important?
     where in the body is @[gene] expressed?
 
-%[query_gene_associated_diseases]('training': '500', 'testing': '500')
+%[query_gene_associated_diseases]('training': '2000', 'testing': '2000')
     which traits are associated with @[gene]?
     which diseases are associated with @[gene]?
     which phenotypes are associated with @[gene]?
@@ -67,7 +67,7 @@
     what diseases are linked to @[gene]?
     what phenotypes are linked to @[gene]?
 
-%[query_disease_summary]('training': '500', 'testing': '500')
+%[query_disease_summary]('training': '2000', 'testing': '2000')
     tell me about @[disease]
     tell me about the disease @[disease]
     tell me about the trait @[disease]
@@ -86,7 +86,7 @@
     can you summarize the trait @[disease]?
     can you summarize the phenotype @[disease]?
 
-%[query_disease_associated_genes]('training': '500', 'testing': '500')
+%[query_disease_associated_genes]('training': '2000', 'testing': '2000')
     which genes are associated with @[disease]?
     which proteins are associated with @[disease]?
     which targets are associated with @[disease]?
